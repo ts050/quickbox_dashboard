@@ -213,6 +213,12 @@
               <?php if (file_exists("/install/.plexpy.lock")) { ?>
                 <li><a class="grayscale" href="<?php echo "$plexpyURL"; ?>" target="_blank"><img src="img/brands/plexpy.png" class="brand-ico"> <span>PlexPy</span></a></li>
               <?php } ?>
+              <?php if (file_exists('/install/.lidarr.lock')) { ?>
+                <li><a class="grayscale" href="<?php echo "$lidarrURL"; ?>" target="_blank"><img src="img/brands/lidarr.png" class="brand-ico"> <span>Lidarr</span></a></li>
+              <?php } ?>
+              <?php if (file_exists("/install/.Tautulli.lock")) { ?>
+                <li><a class="grayscale" href="<?php echo "$TautulliURL"; ?>" target="_blank"><img src="img/brands/Tautulli.png" class="brand-ico"> <span>Tautulli</span></a></li>
+              <?php } ?>
               <?php if (file_exists("/install/.ombi.lock")) { ?>
                 <li><a class="grayscale" href="<?php echo "$ombiURL"; ?>" target="_blank"><img src="img/brands/plexrequests-net.png" class="brand-ico"> <span>Ombi</span></a></li>
               <?php } ?>

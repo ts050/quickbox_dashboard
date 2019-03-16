@@ -249,6 +249,8 @@ $nzbget = processExists("nzbget",$username);
 $nzbhydra = processExists("nzbhydra",$username);
 $ombi = processExists("ombi",$username);
 $plex = processExists("Plex",plex);
+$Tautulli = processExists("Tautulli",Tautulli);
+$lidarr = processExists("lidarr",$username);
 $plexpy = processExists("plexpy",plexpy);
 $pyload = processExists("pyload",$username);
 $radarr = processExists("radarr",$username);
@@ -295,6 +297,8 @@ if(file_exists('/srv/panel/custom/url.override.php')){
   $netdataURL = "https://" . $_SERVER['HTTP_HOST'] . "/netdata/";
   $nextcloudURL = "https://" . $_SERVER['HTTP_HOST'] . "/nextcloud";
   $nzbgetURL = "https://" . $_SERVER['HTTP_HOST'] . "/nzbget";
+  $lidarrURL = "https://" . $_SERVER['HTTP_HOST'] . "/lidarr";
+  $TautulliURL = "https://" . $_SERVER['HTTP_HOST'] . "/tautulli";
   $nzbhydraURL = "https://" . $_SERVER['HTTP_HOST'] . "/nzbhydra";
   $plexURL = "http://" . $_SERVER['HTTP_HOST'] . ":32400/web/";
   $plexpyURL = "https://" . $_SERVER['HTTP_HOST'] . "/plexpy";
@@ -340,6 +344,10 @@ case 0:
     $cbodycp .= $couchpotato;
   $emby = isEnabled("emby-server", $username);
     $cbodye .= $emby;
+  $lidarr = isEnabled("lidarr", $username);
+    $cbodylid .= $lidarr;
+  $Tautulli = isEnabled("Tautulli",Tautulli);
+    $cbodytt .= $Tautulli;
   $flood = isEnabled("flood", $username);
     $cbodyf .= $flood;
   $headphones = isEnabled("headphones", $username);
@@ -417,6 +425,12 @@ case 66:
     } elseif ($process == "nzbget"){
       shell_exec("sudo systemctl enable $process@$username");
       shell_exec("sudo systemctl start $process@$username");
+    } elseif ($process == "lidarr"){
+      shell_exec("sudo systemctl enable $process");
+      shell_exec("sudo systemctl start $process");
+    } elseif ($process == "Tautulli"){
+      shell_exec("sudo systemctl enable $process");
+      shell_exec("sudo systemctl start $process");
     } elseif ($process == "plexmediaserver"){
       shell_exec("sudo systemctl enable $process");
       shell_exec("sudo systemctl start $process");
@@ -463,6 +477,12 @@ case 77:
       shell_exec("sudo systemctl stop $process");
       shell_exec("sudo systemctl disable $process");
     } elseif ($process == "emby-server"){
+      shell_exec("sudo systemctl stop $process");
+      shell_exec("sudo systemctl disable $process");
+    } elseif ($process == "lidarr"){
+      shell_exec("sudo systemctl stop $process");
+      shell_exec("sudo systemctl disable $process");
+    } elseif ($process == "Tautulli"){
       shell_exec("sudo systemctl stop $process");
       shell_exec("sudo systemctl disable $process");
     } elseif ($process == "headphones"){
@@ -515,6 +535,12 @@ case 88:
       shell_exec("sudo systemctl enable $process");
       shell_exec("sudo systemctl restart $process");
     } elseif ($process == "netdata"){
+      shell_exec("sudo systemctl enable $process");
+      shell_exec("sudo systemctl restart $process");
+    } elseif ($process == "lidarr"){
+      shell_exec("sudo systemctl stop $process");
+      shell_exec("sudo systemctl disable $process");
+    } elseif ($process == "Tautulli"){
       shell_exec("sudo systemctl enable $process");
       shell_exec("sudo systemctl restart $process");
     } elseif ($process == "plexmediaserver"){
